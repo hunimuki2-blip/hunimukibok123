@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: clipvibe-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node backend/server.js
+    envVars:
+      - key: MONGO_URI
+        value: ${MONGO_URI}
+      - key: JWT_SECRET
+        value: ${JWT_SECRET}
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
