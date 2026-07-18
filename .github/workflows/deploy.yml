@@ -25,6 +25,14 @@ jobs:
           npm run build
           cd ..
       
+      - name: Copy build to root for Railway
+        run: |
+          # Copy frontend build to root so Railway can find index.html
+          cp -r frontend/build/* .
+          # Also keep the frontend/build for local reference
+          echo "Build files copied to root"
+          ls -la index.html
+      
       - name: Deploy to Railway
         uses: railwayapp/railway-deploy@v1.0.0
         with:

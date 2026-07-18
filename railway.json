@@ -1,0 +1,16 @@
+{
+  "service": {
+    "name": "clipvibe",
+    "startCommand": "node backend/server.js",
+    "installCommand": "npm install && cd frontend && npm install",
+    "buildCommand": "cd frontend && npm run build",
+    "staticFiles": {
+      "path": "frontend/build",
+      "serve": true
+    },
+    "env": {
+      "NODE_ENV": "production",
+      "PORT": "3000"
+    }
+  }
+}
