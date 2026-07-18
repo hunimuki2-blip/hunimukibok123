@@ -1,0 +1,12 @@
+{
+  "app": "clipvibe",
+  "description": "ClipVibe - Video Sharing Platform",
+  "start": "node backend/server.js",
+  "install": "npm install",
+  "build": "cd frontend && npm install && npm run build",
+  "static": "frontend/build",
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "3000"
+  }
+}
