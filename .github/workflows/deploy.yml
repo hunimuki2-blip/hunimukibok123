@@ -25,13 +25,29 @@ jobs:
           npm run build
           cd ..
       
-      - name: Copy build to root for Railway
+      - name: Copy build files to root for Railway
         run: |
-          # Copy frontend build to root so Railway can find index.html
+          # Railway needs all static files at the root level
+          # Copy everything from frontend/build to root
+          echo "Copying frontend/build/* to root..."
           cp -r frontend/build/* .
-          # Also keep the frontend/build for local reference
-          echo "Build files copied to root"
+          cp -r frontend/build/.* . 2>/dev/null || true
+          
+          # Verify index.html exists at root
+          echo "Checking for index.html at root..."
           ls -la index.html
+          
+          # Also verify static files
+          echo "Checking static files..."
+          ls -la static/
+      
+      - name: Verify files before deploy
+        run: |
+          echo "=== Files at root ==="
+          ls -la
+          echo ""
+          echo "=== index.html content ==="
+          cat index.html
       
       - name: Deploy to Railway
         uses: railwayapp/railway-deploy@v1.0.0

@@ -1,0 +1,22 @@
+{
+  "staticFiles": {
+    "path": ".",
+    "include": [
+      "index.html",
+      "static/**",
+      "asset-manifest.json",
+      "manifest.json",
+      "favicon.ico"
+    ]
+  },
+  "routes": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
