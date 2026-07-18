@@ -1,0 +1,22 @@
+{
+  "services": {
+    "backend": {
+      "type": "node",
+      "start": "node backend/server.js",
+      "installDependencies": true,
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "$PORT"
+      }
+    },
+    "frontend": {
+      "type": "static",
+      "start": "npx serve -s frontend/build",
+      "installDependencies": true,
+      "build": "cd frontend && npm install && npm run build",
+      "staticSite": {
+        "dir": "frontend/build"
+      }
+    }
+  }
+}
